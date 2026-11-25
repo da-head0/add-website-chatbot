@@ -1,0 +1,25 @@
+---
+description: Where to put a third-party chatbot, live chat, or support widget script (tawk.to, Crisp, Tidio, Chatbase, Channel Talk, ...) in Next.js, Vite, Lovable, Bolt, v0, plain HTML, WordPress or Webflow, and how to check it loads.
+alwaysApply: false
+---
+
+# Adding a chatbot / chat widget script
+
+- Use the vendor's real snippet. Never invent widget IDs, property IDs, or keys; ask the user to paste the snippet if it's missing.
+- Public widget IDs can be inlined. Never put a vendor API secret in client code or in a `NEXT_PUBLIC_` / `VITE_` variable.
+- Add the snippet once, in the layout that wraps every page, never in a page or a conditionally rendered component.
+
+Where it goes:
+- Next.js App Router: `app/layout.tsx`, `import Script from 'next/script'`, inside `<body>` after `{children}`. For an external file use `<Script src="..." strategy="lazyOnload" />`. For inline JavaScript use `<Script id="chat-widget" strategy="lazyOnload">{`...`}</Script>`, which needs an `id`.
+- Next.js Pages Router: `pages/_app.tsx`, the same `<Script>` after `<Component {...pageProps} />`.
+- Vite / React / Vue / Svelte (incl. most Lovable and Bolt projects): root `index.html`, just before `</body>`. Create React App uses `public/index.html`.
+- v0: Next.js App Router, as above.
+- Plain HTML: before `</body>` on every page, or in the shared footer include.
+- WordPress: the vendor's plugin, or a header/footer code plugin's Footer box. Purge the page cache afterwards.
+- Webflow: Site settings → Custom code → Footer code, then publish. This needs a paid site plan.
+
+If it doesn't show up:
+- The site has a Content-Security-Policy: add the vendor's domains to `script-src`, `connect-src` (often `wss:` too), `img-src`, `style-src`, `frame-src`. Use the vendor docs or the console errors to get the domains.
+- The vendor restricts allowed domains: add `localhost` and preview domains in the vendor dashboard.
+- It shows twice: the snippet is in two places.
+- Check: Network tab shows the vendor script with 200, the console has no CSP errors, and the bubble survives client-side navigation.

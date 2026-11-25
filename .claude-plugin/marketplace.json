@@ -1,0 +1,14 @@
+{
+  "name": "add-website-chatbot",
+  "description": "A skill for adding chatbot and live chat widgets to websites built with Next.js, Vite, Lovable, Bolt, v0, HTML, WordPress or Webflow.",
+  "owner": {
+    "name": "da-head0"
+  },
+  "plugins": [
+    {
+      "name": "add-website-chatbot",
+      "source": "./",
+      "description": "Add a chatbot or live chat widget to Next.js, Vite, Lovable, Bolt, v0, HTML, WordPress or Webflow sites."
+    }
+  ]
+}

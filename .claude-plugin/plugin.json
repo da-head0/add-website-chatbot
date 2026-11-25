@@ -1,0 +1,10 @@
+{
+  "name": "add-website-chatbot",
+  "version": "0.1.0",
+  "description": "Add a chatbot or live chat widget (tawk.to, Crisp, Tidio, Chatbase, Channel Talk, or any script snippet) to Next.js, Vite, Lovable, Bolt, v0, HTML, WordPress or Webflow sites: the right file, CSP, preview domains, and a load check.",
+  "author": { "name": "da-head0" },
+  "homepage": "https://github.com/da-head0/add-website-chatbot",
+  "repository": "https://github.com/da-head0/add-website-chatbot",
+  "license": "MIT",
+  "keywords": ["chatbot", "live-chat", "widget", "nextjs", "vite", "lovable", "bolt", "v0", "wordpress", "webflow"]
+}
